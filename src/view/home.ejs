@@ -1,0 +1,46 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+    <!-- Welcome -->
+    <div class="text-center">
+        <h2 class="h1 my-4">Bienvenue sur O'Quiz</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="row mb-3 text-center flew-wrap">
+
+     <%   quizs.map(e => { %>
+
+        <!-- One card -->
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="h2"><%= e.title%></h3>
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h4 class="h3"><%= e.description%></h4>
+                    <p><%= e.author.firstname%> <%= e.author.lastname%></p>
+                    <ul class="list-unstyled mb-4 p-0">
+
+                        <%if(e.tags.length>0){%>
+                        <li class="badge bg-primary"><%= JSON.stringify(e.tags[0].name) %></li>
+                        <% } %>
+
+                         <% if(e.tags.length>1){%>
+                        <li class="badge bg-primary"><%= JSON.stringify(e.tags[1].name) %></li>
+                        <% } %>
+
+                    </ul>
+                    <a href="/quiz/<%=e.id%>" class="btn btn-lg btn-primary text-white">Jouer</a>
+                </div>
+            </div>
+        </div>
+        
+        <%  }) %>
+
+
+    </div>
+</main>
+
+<%- include('./partials/footer') %>
