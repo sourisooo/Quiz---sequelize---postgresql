@@ -36,7 +36,7 @@
 
       <form action="/quiz/<%=question.id  %>" method="POST">
 
-      <%  question.propositions.sort((a, b) => 0.5 - Math.random()).map(prop => {  %>
+      <%  question.propositions.sort((a, b) => Math.random()*10000 - Math.random()*10000).map(prop => {  %>
       <div>
 
         <input type="radio" id="<%= prop.id%>" name="<%=question.id %>" value="<%= prop.description%>">
