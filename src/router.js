@@ -9,10 +9,16 @@ const router = Router();
 // Le configurer
 router.get("/", mainController.renderHomePage);
 router.get("/levels", levelController.renderLevelsPage);
+router.post("/levels", levelController.addLevel);
+router.post("/leveldelete", levelController.deleteLevel);
+router.post("/levelchangename", levelController.changelevelname);
+router.post("/levelvalidatename", levelController.validatename);
 router.get("/quiz/:id", quizController.renderQuizPage);
 router.post("/quiz/:id", quizController.renderResult);
 router.get("/quiz", quizController.renderQuizPage);
 router.get("/tag", tagController.renderTagPage);
 // L'exporter
 module.exports = router;
+
+
 
