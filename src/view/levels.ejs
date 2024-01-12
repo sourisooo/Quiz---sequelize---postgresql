@@ -11,27 +11,58 @@
 
   <ul>
 
+
+
+    <% if (levelchange === true) { %>
+
+      <form class="mb-5" action="/levelvalidatename" method="POST">
+        <label class="form-label" for="name">Nouveau Nom du niveau pour</label>
+        <span class="badge bg-info p-3 mb-1"><%= lvlid.name %></span>
+        <input class="form-control" type="text" name="<%= lvlid.id %>" required>
+        <input class="btn btn-primary mt-3" type="submit" value="Modifier le nom du niveau">
+      </form>
+
+    <% } %>
+
+
+    <% if (levelchange === false) { %>
+
+
     <% levels.forEach(level => { %>
       
       <li>
         <span class="badge bg-info p-3 mb-1"><%= level.name %></span>
-        <a class="btn btn-outline-info py-0 px-1 ms-3 fs-6 text-decoration-none" href="#">ÉDITER</a>
-        <form class="d-inline" action="#" method="POST">
-          <input class="btn btn-outline-danger py-0 px-1 ms-3 fs-6" type="submit" value="SUPPRIMER">
+
+  
+        <form class="d-inline" action="/levelchangename" method="POST">
+        <input class="btn btn-outline-info py-0 px-1 ms-3 fs-6 text-decoration-none"  name="<%= level.id %>"  type="submit" value="EDITER">
+      </form>
+
+        <form class="d-inline" action="/leveldelete" method="POST">
+          <input class="btn btn-outline-danger py-0 px-1 ms-3 fs-6" name="<%= level.id %>" type="submit" value="SUPPRIMER">
         </form>
       </li>
 
+   
+
     <% }) %>
+
+    <% } %>
 
   </ul>
 
+  <% if (levelchange === false) { %>
+
   <h2 class="my-4">Ajouter un niveau</h2>
 
-  <form class="mb-5" action="#" method="POST">
+  <form class="mb-5" action="/levels" method="POST">
     <label class="form-label" for="name">Nom du niveau</label>
     <input class="form-control" type="text" name="name" id="name" required>
     <input class="btn btn-primary mt-3" type="submit" value="Ajouter le niveau">
   </form>
+
+  <% } %>
+
 
 </main>
 
