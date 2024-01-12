@@ -8,7 +8,7 @@
 
     <%tags.map(tag=> {%>
 
-    <span class="badge bg-primary p-2 mb-1"><%tag.name%></span>
+    <span class="badge bg-primary p-2 mb-1"><%=tag.name%></span>
     <ul>
       <% tag.quizzes.map(quizze=> { %>
       <li><a href="/quiz/<%=quizze.id%>"><%=quizze.title%></a></li>
