@@ -1,5 +1,5 @@
 const { Level } = require("../models");
-const prompt = require('prompt');
+
 let levelchange;
 let lvlid;
 
